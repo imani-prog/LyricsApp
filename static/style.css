@@ -1,0 +1,82 @@
+body {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lyrics-form input, .lyrics-form button {
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.lyrics-display {
+    white-space: pre-wrap;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.top-artists {
+    margin-top: 30px;
+}
+
+.artist-card {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 15px;
+    width: 150px;
+    transition: transform 0.2s ease;
+}
+
+.artist-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.artist-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+@media (max-width: 768px) {
+    .lyrics-form .row {
+        flex-direction: column;
+    }
+
+    .lyrics-form .col-md-4 {
+        width: 100%;
+    }
+
+    .artist-card {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    h1, h2 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .lyrics-display {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .artist-card img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .footer p,
+    .footer a {
+        font-size: 0.9rem;
+    }
+
+    .lyrics-form button {
+        font-size: 0.9rem;
+    }
+}
