@@ -21,7 +21,6 @@ top_artists = [
 ]
 
 # ------------------ GENIUS ------------------
-
 def get_lyrics_from_genius(artist, title):
     base_url = "https://api.genius.com"
     headers = {'Authorization': f'Bearer {GENIUS_ACCESS_TOKEN}'}
@@ -40,10 +39,11 @@ def get_lyrics_from_genius(artist, title):
     page = requests.get(song_url)
     html = BeautifulSoup(page.text, "html.parser")
 
-    containers = html.select("div[class^='Lyrics__Container']")
+    containers = html.find_all("div", {"data-lyrics-container": "true"})
     lyrics = "\n".join([c.get_text(separator="\n") for c in containers]) if containers else None
 
     return lyrics.strip() if lyrics else None, "Lyrics not found on Genius."
+
 
 
 # ------------------ MAIN ROUTE ------------------
