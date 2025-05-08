@@ -6,13 +6,10 @@ import os
 from dotenv import load_dotenv
 import logging
 
-# Load environment variables
 load_dotenv()
 
-# Initialize Flask app
 app = Flask(__name__)
 
-# Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -38,7 +35,7 @@ def get_lyrics_from_genius(artist, title):
     search_url = f"{base_url}/search"
     params = {'q': f'{artist} {title}'}
 
-    # Make Genius API request
+    # Genius API request
     response = requests.get(search_url, params=params, headers=headers)
     logger.debug(f"Genius API Response: {response.status_code} - {response.text}")
 
@@ -51,7 +48,7 @@ def get_lyrics_from_genius(artist, title):
         logger.info(f"No results found on Genius for artist: {artist}, title: {title}")
         return None, "Song not found on Genius."
 
-    # Extract song URL and fetch lyrics
+    #fetch lyrics
     song_url = hits[0]["result"]["url"]
     logger.debug(f"Song URL: {song_url}")
 
